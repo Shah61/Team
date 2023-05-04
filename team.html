@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="team.css">
+    <script src="https://kit.fontawesome.com/6bd6c771de.js" crossorigin="anonymous"></script>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <!--TITLE-->
+    <title>Our Team</title>
+
+
+
+</head>
+
+<body>
+    <section id="team">
+        <div class="team-heading">
+            <h3>Our Team</h3>
+        </div>
+
+
+        <!-- Slider -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+
+                    <div class="team-box">
+                        <div class="imgBx">
+                            <img src="images/img1.jpg">
+                        </div>
+
+                        <div class="imgtext">
+                            <strong>Mukhtar Shah</strong>
+                            <span>Web Developer</span>
+                            <div class="social">
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="swiper-slide">
+                    <div class="team-box">
+                        <div class="imgBx">
+                            <img src="images/img2.jpg">
+                        </div>
+
+                        <div class="imgtext">
+                            <strong>Mukhtar Shah</strong>
+                            <span>Web Developer</span>
+                            <div class="social">
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="swiper-slide">
+
+                    <div class="team-box">
+                        <div class="imgBx">
+                            <img src="images/nezuko.gif">
+                        </div>
+
+                        <div class="imgtext">
+                            <strong>Mukhtar Shah</strong>
+                            <span>Web Developer</span>
+                            <div class="social">
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+    </section>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var slides = document.querySelectorAll('.swiper-slide');
+        var slideLength = slides.length;
+        var firstSlide = slides[0].cloneNode(true);
+        var lastSlide = slides[slideLength - 1].cloneNode(true);
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            loop: false,
+            initialSlide: 1,
+            slidesPerView: "auto",
+            keyboard: {
+                enabled: true,
+            },
+            coverflowEffect: {
+                rotate: 20,
+                stretch: -20,
+                depth: 120,
+                modifier: 3,
+                slideShadows: true,
+            },
+            loopPreventSlide: true,
+        });
+
+        swiper.prependSlide(lastSlide);
+        swiper.appendSlide(firstSlide);
+
+        swiper.on("slideChange", function () {
+            var activeIndex = this.activeIndex;
+            var slideLength = this.slides.length;
+            if (activeIndex === slideLength - 1) {
+                // slide to copy of first slide
+                this.slideTo(1, 0, false);
+            } else if (activeIndex === 0) {
+                // slide to copy of last slide
+                this.slideTo(slideLength - 2, 0, false);
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.code === "ArrowRight") {
+                swiper.slideNext();
+                swiper.params.coverflowEffect.enabled = true; // enable coverflowEffect when slide to the right
+            } else if (event.code === "ArrowLeft") {
+                swiper.slidePrev();
+                swiper.params.coverflowEffect.enabled = true; // enable coverflowEffect when slide to the left
+            }
+        });
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
